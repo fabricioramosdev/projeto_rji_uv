@@ -20,8 +20,8 @@ if __name__ == '__main__':
                     if  arduino.inWaiting() > 0: 
                         answer=arduino.readline()                       
                         print("{}\t{}".format(datetime.now(), answer))
-                        with open("uv_log.txt","a+") as file:
-                            file.write("{}\t{}".format(datetime.now(), answer))                        
+                        with open("/home/pi/projeto_uv/uv_log.csv","a+") as file:
+                            file.write("{};{}\n".format(datetime.now(), answer))                        
                         arduino.flushInput() #remove data after reading
                     time.sleep(10)
             except KeyboardInterrupt:
